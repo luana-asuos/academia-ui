@@ -52,17 +52,20 @@
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
-      <mat-header-cell *matHeaderCellDef>
-        <button mat-mini-fab class="btn btn-primary" aria-label="Adicionar um aluno">
-          <mat-icon (click)="onAdd()" >add</mat-icon>
+      <mat-header-cell *matHeaderCellDef style="display: flex; justify-content: center; align-items: center; padding: 0;">
+        <button mat-mini-fab class="btn btn-primary" aria-label="Adicionar um aluno" style="margin: 0; display: flex; align-items: center;">
+            <mat-icon (click)="onAdd()">add</mat-icon>
         </button>
       </mat-header-cell>
 
       <mat-cell *matCellDef="let aluno">
-          <mat-icon style="color: blue;">edit</mat-icon>
+        <button mat-icon-button style="border: none; background: none; padding: 0;">
+            <mat-icon style="color: blue;">edit</mat-icon>
+        </button>
 
-          <mat-icon style="color: red;">delete</mat-icon>
-
+        <button mat-icon-button style="border: none; background: none; padding: 0;">
+            <mat-icon style="color: red;">delete</mat-icon>
+        </button>
       </mat-cell>
 
     </ng-container>
