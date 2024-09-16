@@ -28,7 +28,7 @@ export class AlunoFormComponent implements OnInit{
   }
 
   onSubmit(){
-
+    console.log();
   }
 
   onCancel(){
