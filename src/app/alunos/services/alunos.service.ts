@@ -17,7 +17,11 @@ export class AlunosService {
   }
 
    public adicionarAluno(aluno: Aluno): Observable<Aluno>{
-    return this.httpClient.post<Aluno>("(this.apiUrl", aluno);
+    return this.httpClient.post<Aluno>(this.apiUrl, aluno);
   }
+
+  // save(record: Aluno){
+  //   console.log(record)
+  // }
 
 }

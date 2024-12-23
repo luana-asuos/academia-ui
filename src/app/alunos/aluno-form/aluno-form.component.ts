@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlunosService } from '../services/alunos.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-aluno-form',
@@ -11,7 +13,7 @@ export class AlunoFormComponent implements OnInit{
 
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute, private service: AlunosService, private snackBar: MatSnackBar) {
     this.form = this.formBuilder.group({
       nome:  [null],
       dataNascimento: [null],
@@ -28,7 +30,11 @@ export class AlunoFormComponent implements OnInit{
   }
 
   onSubmit(){
-    console.log();
+    this.service.adicionarAluno(this.form.value)
+    .subscribe(result => console.log(result), error => {
+      this.snackBar.open('Erro ao salvar aluno.', '', {duration: 5000});
+    });
+
   }
 
   onCancel(){
