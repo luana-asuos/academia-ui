@@ -1,18 +1,78 @@
-mat-card{
+mat-card {
   max-width: 90%;
   margin: 2em auto;
   text-align: center;
 }
 
-.column-flex{
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
+.table-container {
+  overflow-x: auto;
+  display: block;
+  margin-top: 20px;
+  max-width: 100%;
 }
 
+mat-table {
+  min-width: 1400px;
+}
 
+mat-header-cell,
+mat-cell {
+  white-space: nowrap;
+  text-overflow: ellipsis; /* Adiciona "..." ao final do texto que não cabe */
+  overflow: hidden; /* Esconde o texto extra */
+}
 
+mat-header-cell[colspan="nome"],
+mat-cell[colspan="nome"] {
+  width: 80%;
+}
 
+mat-header-cell[colspan="dataVencimento"],
+mat-cell[colspan="dataVencimento"] {
+  width: 15%;
+}
 
+mat-header-cell[colspan="email"],
+mat-cell[colspan="email"] {
+  width: 20%;
+}
 
+mat-header-cell[colspan="dataNascimento"],
+mat-cell[colspan="dataNascimento"] {
+  width: 15%;
+}
 
+mat-header-cell[colspan="telefone"],
+mat-cell[colspan="telefone"] {
+  width: 15%;
+}
+
+mat-header-cell[colspan="rg"],
+mat-cell[colspan="rg"] {
+  width: 12%;
+}
+
+mat-header-cell[colspan="cpf"],
+mat-cell[colspan="cpf"] {
+  width: 12%;
+}
+
+mat-header-cell[colspan="rua"],
+mat-cell[colspan="rua"] {
+  width: 50%;
+}
+
+mat-header-cell[colspan="bairro"],
+mat-cell[colspan="bairro"] {
+  width: 20%;
+}
+
+mat-header-cell[colspan="numero"],
+mat-cell[colspan="numero"] {
+  width: 2%;
+}
+
+mat-header-cell[colspan="estado"],
+mat-cell[colspan="estado"] {
+  width: 8%;
+}
