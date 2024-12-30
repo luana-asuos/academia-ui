@@ -59,14 +59,14 @@
       </mat-header-cell>
 
       <mat-cell *matCellDef="let aluno">
-        <button mat-icon-button style="border: none; background: none; padding: 0;">
-            <mat-icon style="color: blue;">edit</mat-icon>
+        <button mat-icon-button class="icon-edit" aria-label="Editar Aluno">
+          <mat-icon>edit</mat-icon>
         </button>
 
-        <button mat-icon-button style="border: none; background: none; padding: 0;">
-            <mat-icon style="color: red;">delete</mat-icon>
-        </button>
-      </mat-cell>
+          <button mat-icon-button class="icon-delete" aria-label="Deletar Aluno" (click)="onDelete(aluno.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
 
     </ng-container>
 

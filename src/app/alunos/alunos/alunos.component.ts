@@ -43,24 +43,16 @@ export class AlunosComponent implements OnInit{
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
-  /* public enviarDados(): void{
-    let aluno: Aluno = new Aluno();
-    aluno.nome = "Teste";
-    aluno.dataNascimento = "15/10/2024";
-    aluno.telefone = "45895623";
-    aluno.email = "luana@luana";
-    aluno.rg = "xx.xxx.xxx-x";
-    aluno.cpf = "425.192.738-95";
-    aluno.dataNascimento = "15/10/2001";
-    this.alunosService.adicionarAluno(aluno).subscribe({
-      next: (res: Aluno) => {
-        console.log("Aluno adicionado!");
-        console.log(res);
-      },
-      error: (err:any) => {
-        console.log("Erro ao adicionar aluno");
-        console.log(err);
-      }
-    });
-  } */
-}
+  onDelete(id: string): void {
+    if (confirm('Tem certeza que deseja deletar este aluno?')) {
+      this.alunosService.deletarAluno(id).subscribe({
+        next: () => {
+          console.log(`Aluno com ID ${id} deletado com sucesso!`);
+          this.lista = this.lista.filter(aluno => aluno.id !== id);
+        },
+        error: (err: any) => {
+          console.error('Erro ao deletar aluno:', err);
+        }
+      });
+    }
+  }}

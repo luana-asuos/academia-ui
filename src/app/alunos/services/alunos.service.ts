@@ -20,6 +20,10 @@ export class AlunosService {
     return this.httpClient.post<Aluno>(this.apiUrl, aluno);
   }
 
+  public deletarAluno(id: string): Observable<void> {
+    return this.httpClient.delete<void>(`${this.apiUrl}/${id}`)
+  }
+
   // save(record: Aluno){
   //   console.log(record)
   // }
