@@ -5,74 +5,93 @@ mat-card {
 }
 
 .table-container {
-  overflow-x: auto;
+  overflow-x: auto; /* Scroll horizontal ativado */
   display: block;
   margin-top: 20px;
   max-width: 100%;
 }
 
 mat-table {
-  min-width: 1400px;
+  min-width: 1600px; /* Define uma largura mínima para a tabela */
+  width: 100%; /* Permite que a tabela ocupe todo o espaço disponível */
+  table-layout: auto; /* Permite largura dinâmica para colunas */
 }
 
 mat-header-cell,
 mat-cell {
-  white-space: nowrap;
+  white-space: nowrap; /* Evita quebra de linha */
+  overflow: hidden; /* Esconde conteúdo excedente */
   text-overflow: ellipsis; /* Adiciona "..." ao final do texto que não cabe */
-  overflow: hidden; /* Esconde o texto extra */
+  padding: 8px 16px; /* Ajusta espaçamento interno */
+  text-align: left; /* Alinha o texto à esquerda */
 }
 
-mat-header-cell[colspan="nome"],
-mat-cell[colspan="nome"] {
-  width: 80%;
+mat-header-cell:nth-child(1),
+mat-cell:nth-child(1) {
+  min-width: 190px; /* Nome - largura mínima */
 }
 
-mat-header-cell[colspan="dataVencimento"],
-mat-cell[colspan="dataVencimento"] {
-  width: 15%;
+mat-header-cell:nth-child(2),
+mat-cell:nth-child(2) {
+  min-width: 100px; /* Data de Vencimento */
 }
 
-mat-header-cell[colspan="email"],
-mat-cell[colspan="email"] {
-  width: 20%;
+mat-header-cell:nth-child(3),
+mat-cell:nth-child(3) {
+  min-width: 190px; /* Email */
 }
 
-mat-header-cell[colspan="dataNascimento"],
-mat-cell[colspan="dataNascimento"] {
-  width: 15%;
+mat-header-cell:nth-child(4),
+mat-cell:nth-child(4) {
+  min-width: 100px; /* Data de Nascimento */
 }
 
-mat-header-cell[colspan="telefone"],
-mat-cell[colspan="telefone"] {
-  width: 15%;
+mat-header-cell:nth-child(5),
+mat-cell:nth-child(5) {
+  min-width: 110px; /* Telefone */
 }
 
-mat-header-cell[colspan="rg"],
-mat-cell[colspan="rg"] {
-  width: 12%;
+mat-header-cell:nth-child(6),
+mat-cell:nth-child(6) {
+  min-width: 100px; /* RG */
 }
 
-mat-header-cell[colspan="cpf"],
-mat-cell[colspan="cpf"] {
-  width: 12%;
+mat-header-cell:nth-child(7),
+mat-cell:nth-child(7) {
+  min-width: 120px; /* CPF */
 }
 
-mat-header-cell[colspan="rua"],
-mat-cell[colspan="rua"] {
-  width: 50%;
+mat-header-cell:nth-child(8),
+mat-cell:nth-child(8) {
+  min-width: 150px; /* Rua */
 }
 
-mat-header-cell[colspan="bairro"],
-mat-cell[colspan="bairro"] {
-  width: 20%;
+mat-header-cell:nth-child(9),
+mat-cell:nth-child(9) {
+  min-width: 70px; /* Número */
 }
 
-mat-header-cell[colspan="numero"],
-mat-cell[colspan="numero"] {
-  width: 2%;
+mat-header-cell:nth-child(10),
+mat-cell:nth-child(10) {
+  min-width: 100px; /* Bairro */
 }
 
-mat-header-cell[colspan="estado"],
-mat-cell[colspan="estado"] {
-  width: 8%;
+mat-header-cell:nth-child(11),
+mat-cell:nth-child(11) {
+  min-width: 70px; /* CEP */
+}
+
+mat-header-cell:nth-child(12),
+mat-cell:nth-child(12) {
+  min-width: 50px; /* Cidade */
+}
+
+mat-header-cell:nth-child(12),
+mat-cell:nth-child(12) {
+  min-width: 40px; /* Estado */
+}
+
+mat-header-cell:nth-child(13),
+mat-cell:nth-child(13) {
+  width: auto; /* Ações - ajusta dinamicamente */
 }
