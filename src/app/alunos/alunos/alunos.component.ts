@@ -1,58 +1,86 @@
-import { AlunosService } from './../services/alunos.service';
-import { Component, OnInit } from '@angular/core';
-import { Aluno } from '../model/aluno';
+import { Component, OnInit, ViewChild, EventEmitter, Output } from '@angular/core';
+import { AlunosService } from '../services/alunos.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ChangeDetectorRef } from '@angular/core';
+import { Aluno } from '../model/aluno';
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-alunos',
   templateUrl: './alunos.component.html',
-  styleUrl: './alunos.component.css'
+  styleUrls: ['./alunos.component.css']
 })
-export class AlunosComponent implements OnInit{
-
+export class AlunosComponent implements OnInit {
   public lista: Aluno[];
+  public dataSource: MatTableDataSource<Aluno>;
 
-  //alunos: Aluno[] = [];
-  readonly displayedColumns = ['nome', 'dataVencimento', 'email', 'dataNascimento', 'telefone', 'rg', 'cpf', 'actions']
-
-  //alunosService: AlunosService;
+  @Output() delete = new EventEmitter<Aluno>();
+  readonly displayedColumns = ['nome', 'dataVencimento', 'email', 'dataNascimento', 'telefone', 'rg', 'cpf', 'actions'];
+  @ViewChild(MatTable) table!: MatTable<any>;
 
   constructor(
     private alunosService: AlunosService,
     private router: Router,
-    private route: ActivatedRoute
-    ) {
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef,
+    private snackBar: MatSnackBar
+  ) {
     this.lista = [];
+    this.dataSource = new MatTableDataSource(this.lista);
   }
 
   ngOnInit(): void {
     this.alunosService.requisitarAlunos().subscribe({
       next: (res: Aluno[]) => {
-        console.log("Sucesso");
-        console.log(res);
         this.lista = res;
+        this.dataSource.data = this.lista;
       },
       error: (err: any) => {
-        console.log("ERRO");
-        console.log(err);
+        console.error('Erro ao requisitar alunos:', err);
       }
     });
   }
 
-  onAdd(){
-    this.router.navigate(['new'], {relativeTo: this.route});
+  onAdd(): void {
+    this.router.navigate(['new'], { relativeTo: this.route });
   }
 
-  onDelete(id: string): void {
-    if (confirm('Tem certeza que deseja deletar este aluno?')) {
-      this.alunosService.deletarAluno(id).subscribe({
-        next: () => {
-          console.log(`Aluno com ID ${id} deletado com sucesso!`);
-          this.lista = this.lista.filter(aluno => aluno.id !== id);
-        },
-        error: (err: any) => {
-          console.error('Erro ao deletar aluno:', err);
-        }
-      });
+  onEdit(aluno: Aluno): void {
+    if (aluno && aluno.id) {
+      this.router.navigate(['edit', aluno.id], { relativeTo: this.route });
+    } else {
+      console.error('Aluno não encontrado ou sem id');
     }
-  }}
+  }
+
+  onDelete(aluno: Aluno): void {
+    if (!confirm('Tem certeza que deseja deletar este aluno?')) return;
+
+    this.alunosService.deletarAluno(aluno.id).pipe(
+      catchError((error) => {
+        console.error('Erro ao deletar aluno:', error);
+        this.snackBar.open('Erro ao deletar aluno.', '', { duration: 5000 });
+        alert('Aluno não deletado!');
+        return of(null);
+      })
+    ).subscribe({
+      next: () => {
+        this.lista = this.lista.filter(a => a.id !== aluno.id);
+        this.dataSource.data = [...this.lista];
+
+        if (this.table) {
+          this.table.renderRows();
+        }
+
+        this.cdr.detectChanges();
+        this.snackBar.open('Aluno deletado com sucesso!', '', { duration: 5000 });
+      },
+      error: (err) => {
+        console.error('Erro na subscrição:', err);
+      }
+    });
+  }
+}

@@ -11,7 +11,7 @@ describe('AlunoFormComponent', () => {
       declarations: [AlunoFormComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(AlunoFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
