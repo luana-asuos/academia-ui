@@ -1,18 +1,97 @@
-mat-card{
+mat-card {
   max-width: 90%;
   margin: 2em auto;
   text-align: center;
 }
 
-.column-flex{
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
+.table-container {
+  overflow-x: auto; /* Scroll horizontal ativado */
+  display: block;
+  margin-top: 20px;
+  max-width: 100%;
 }
 
+mat-table {
+  min-width: 1600px; /* Define uma largura mínima para a tabela */
+  width: 100%; /* Permite que a tabela ocupe todo o espaço disponível */
+  table-layout: auto; /* Permite largura dinâmica para colunas */
+}
 
+mat-header-cell,
+mat-cell {
+  white-space: nowrap; /* Evita quebra de linha */
+  overflow: hidden; /* Esconde conteúdo excedente */
+  text-overflow: ellipsis; /* Adiciona "..." ao final do texto que não cabe */
+  padding: 8px 16px; /* Ajusta espaçamento interno */
+  text-align: left; /* Alinha o texto à esquerda */
+}
 
+mat-header-cell:nth-child(1),
+mat-cell:nth-child(1) {
+  min-width: 190px; /* Nome - largura mínima */
+}
 
+mat-header-cell:nth-child(2),
+mat-cell:nth-child(2) {
+  min-width: 100px; /* Data de Vencimento */
+}
 
+mat-header-cell:nth-child(3),
+mat-cell:nth-child(3) {
+  min-width: 190px; /* Email */
+}
 
+mat-header-cell:nth-child(4),
+mat-cell:nth-child(4) {
+  min-width: 100px; /* Data de Nascimento */
+}
 
+mat-header-cell:nth-child(5),
+mat-cell:nth-child(5) {
+  min-width: 110px; /* Telefone */
+}
+
+mat-header-cell:nth-child(6),
+mat-cell:nth-child(6) {
+  min-width: 100px; /* RG */
+}
+
+mat-header-cell:nth-child(7),
+mat-cell:nth-child(7) {
+  min-width: 120px; /* CPF */
+}
+
+mat-header-cell:nth-child(8),
+mat-cell:nth-child(8) {
+  min-width: 150px; /* Rua */
+}
+
+mat-header-cell:nth-child(9),
+mat-cell:nth-child(9) {
+  min-width: 70px; /* Número */
+}
+
+mat-header-cell:nth-child(10),
+mat-cell:nth-child(10) {
+  min-width: 100px; /* Bairro */
+}
+
+mat-header-cell:nth-child(11),
+mat-cell:nth-child(11) {
+  min-width: 70px; /* CEP */
+}
+
+mat-header-cell:nth-child(12),
+mat-cell:nth-child(12) {
+  min-width: 50px; /* Cidade */
+}
+
+mat-header-cell:nth-child(12),
+mat-cell:nth-child(12) {
+  min-width: 40px; /* Estado */
+}
+
+mat-header-cell:nth-child(13),
+mat-cell:nth-child(13) {
+  width: auto; /* Ações - ajusta dinamicamente */
+}

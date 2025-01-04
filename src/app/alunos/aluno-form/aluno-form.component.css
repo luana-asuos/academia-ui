@@ -1,15 +1,43 @@
+/* Estilização do card */
 mat-card {
   max-width: 80%;
   margin: 2em auto;
+  padding: 2em;
   text-align: center;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
 
-.full-width{
+/* Garantir que o formulário ocupe toda a largura */
+.full-width {
   width: 100%;
+  margin-bottom: 16px;
 }
 
-.min-width
-{
+/* Campos responsivos com largura mínima */
+.min-width {
   width: 100%;
   min-width: 150px;
+}
+
+/* Container para layout flexível */
+.form-group-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Campo individual dentro de um grupo */
+.form-group-container mat-form-field {
+  flex: 1;
+  min-width: 200px; /* Tamanho mínimo para evitar encolhimento excessivo */
+}
+
+/* Botões alinhados */
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 2em;
 }
