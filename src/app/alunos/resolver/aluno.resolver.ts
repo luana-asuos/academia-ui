@@ -5,7 +5,11 @@ import { of } from 'rxjs';
 import { Aluno } from '../model/aluno';
 import { AlunosService } from '../services/alunos.service';
 
-export const alunoResolver: ResolveFn<Aluno> = (route, state, service: AlunosService = inject(AlunosService)) => {
+export const alunoResolver: ResolveFn<Aluno> = (
+  route,
+  state,
+  service: AlunosService = inject(AlunosService)
+) => {
   if (route.params?.['id']) {
     console.log('ID recebido no resolver:', route.params['id']);
     return service.loadById(route.params['id']);
@@ -19,7 +23,14 @@ export const alunoResolver: ResolveFn<Aluno> = (route, state, service: AlunosSer
     email: '',
     rg: '',
     cpf: '',
-    dataVencimento: ''
+    dataVencimento: '',
+    enderecoModel: {
+      rua: '',
+      numero: '',
+      bairro: '',
+      cep: '',
+      cidade: '',
+      estado: ''
+    }
   });
 };
-

@@ -2,12 +2,13 @@
   <mat-card-content>
     <mat-toolbar color="primary"> Alunos </mat-toolbar>
 
-    <mat-table [dataSource]="dataSource" class="column-flex mat-elevation-z8">
-      <!-- Nome Column -->
-      <ng-container matColumnDef="nome">
-        <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-        <mat-cell *matCellDef="let aluno"> {{aluno.nome}} </mat-cell>
-      </ng-container>
+    <div class="table-container">
+      <mat-table [dataSource]="dataSource" class="column-flex mat-elevation-z8">
+        <!-- Nome Column -->
+        <ng-container matColumnDef="nome">
+          <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.nome}}"> {{aluno.nome}} </mat-cell>
+        </ng-container>
 
         <!-- Data Vencimento Column -->
         <ng-container matColumnDef="dataVencimento">
@@ -81,29 +82,29 @@
           <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.estado}}"> {{aluno.enderecoModel?.estado}} </mat-cell>
         </ng-container>
 
-      <!-- Actions Column -->
-      <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef style="display: flex; justify-content: left; align-items: center; padding: 0.5">
-          <button mat-mini-fab class="btn btn-primary" aria-label="Adicionar um aluno" style="margin: 0; display: flex; align-items: center;" (click)="onAdd()">
-            <mat-icon>add</mat-icon>
-          </button>
-        </mat-header-cell>
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef style="display: flex; justify-content: left; align-items: center; padding: 0.5">
+            <button mat-mini-fab class="btn btn-primary" aria-label="Adicionar um aluno" style="margin: 0; display: flex; align-items: center;" (click)="onAdd()">
+              <mat-icon>add</mat-icon>
+            </button>
+          </mat-header-cell>
 
-        <mat-cell *matCellDef="let aluno">
-          <button mat-icon-button class="icon-edit" aria-label="Editar Aluno" (click)="onEdit(aluno)">
-            <mat-icon>edit</mat-icon>
-          </button>
+          <mat-cell *matCellDef="let aluno">
+            <button mat-icon-button class="icon-edit" aria-label="Editar Aluno" (click)="onEdit(aluno)">
+              <mat-icon>edit</mat-icon>
+            </button>
 
-          <button mat-icon-button class="icon-delete" aria-label="Deletar Aluno" (click)="onDelete(aluno)">
-            <mat-icon>delete</mat-icon>
-        </button>
-        </mat-cell>
+            <button mat-icon-button class="icon-delete" aria-label="Deletar Aluno" (click)="onDelete(aluno)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
 
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
   </mat-card-content>
 </mat-card>
+

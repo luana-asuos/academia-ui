@@ -9,7 +9,6 @@ import { Aluno } from '../model/aluno';
   selector: 'app-aluno-form',
   templateUrl: './aluno-form.component.html',
   styleUrls: ['./aluno-form.component.css']
-  styleUrls: ['./aluno-form.component.css']
 })
 export class AlunoFormComponent implements OnInit {
   form: FormGroup;
@@ -22,15 +21,7 @@ export class AlunoFormComponent implements OnInit {
     private service: AlunosService,
     private snackBar: MatSnackBar
   ) {
-  constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute,
-    private service: AlunosService,
-    private snackBar: MatSnackBar
-  ) {
     this.form = this.formBuilder.group({
-      nome: [null],
       nome: [null],
       dataNascimento: [null],
       telefone: [null],
@@ -77,6 +68,7 @@ export class AlunoFormComponent implements OnInit {
 
   onSubmit(): void {
     const aluno = {
+      id: this.form.value.id,
       nome: this.form.value.nome,
       dataNascimento: this.form.value.dataNascimento,
       telefone: this.form.value.telefone,
