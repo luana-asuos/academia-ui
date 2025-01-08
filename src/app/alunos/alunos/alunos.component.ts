@@ -9,9 +9,10 @@ import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Component({
-  selector: 'app-alunos',
-  templateUrl: './alunos.component.html',
-  styleUrls: ['./alunos.component.css']
+    selector: 'app-alunos',
+    templateUrl: './alunos.component.html',
+    styleUrls: ['./alunos.component.css'],
+    standalone: false
 })
 export class AlunosComponent implements OnInit {
   public lista: Aluno[] = [];

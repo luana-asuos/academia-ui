@@ -6,9 +6,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Aluno } from '../model/aluno';
 
 @Component({
-  selector: 'app-aluno-form',
-  templateUrl: './aluno-form.component.html',
-  styleUrls: ['./aluno-form.component.css']
+    selector: 'app-aluno-form',
+    templateUrl: './aluno-form.component.html',
+    styleUrls: ['./aluno-form.component.css'],
+    standalone: false
 })
 export class AlunoFormComponent implements OnInit {
   form: FormGroup;
