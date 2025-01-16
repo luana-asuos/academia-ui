@@ -68,6 +68,10 @@ export class AlunosComponent implements OnInit {
     }
   }
 
+  simplifica(texto: string, n: number): string {
+    return texto.length > n ? texto.substring(0, n) + "..." : texto;
+  }
+
   onDelete(aluno: Aluno): void {
     if (!confirm('Tem certeza que deseja deletar este aluno?')) return;
 
