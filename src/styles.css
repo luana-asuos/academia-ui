@@ -1,4 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Estilos para o cabeçalho da célula com o botão adicionar */
+.mat-header-cell-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilos para o contêiner das ações na célula */
+.actions-cell {
+  display: flex;
+  justify-content: center; /* ou flex-end, center, space-between conforme necessário */
+  align-items: center;
+  gap: 5px; /* Espaçamento entre os botões */
+}
+
+/* Estilos para botões de ação */
+.btn-action {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.icon-add {
+  border: none;
+
+  /*border: 3px solid black;
+  border-radius: 5px;*/
+
+  background: none;
+  color: black; /* ou qualquer outra cor que desejar */
+}
+
+.icon-delete {
+  border: none;
+
+  /*border: 3px solid red;
+  border-radius: 5px;*/
+
+  background: none;
+  color: red;
+}
+
+.icon-edit {
+  border: none;
+
+  /*border: 3px solid black;
+  border-radius: 5px;*/
+
+  background: none;
+  color: black; /* ou qualquer outra cor que desejar */
+}

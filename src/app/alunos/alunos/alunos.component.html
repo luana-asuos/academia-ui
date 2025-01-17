@@ -1,107 +1,133 @@
 <mat-card>
   <mat-card-content>
-    <mat-toolbar color="primary"> Alunos </mat-toolbar>
+    <mat-toolbar color="primary">Alunos</mat-toolbar>
 
     <div class="table-container">
-      <mat-table [dataSource]="lista" class="column-flex mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" class="column-flex mat-elevation-z8">
 
         <!-- Nome Column -->
         <ng-container matColumnDef="nome">
           <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.nome}}"> {{aluno.nome}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.nome}}">
+            {{ simplifica(aluno.nome, 15) }}
+          </mat-cell>
         </ng-container>
 
         <!-- Data Vencimento Column -->
         <ng-container matColumnDef="dataVencimento">
           <mat-header-cell *matHeaderCellDef> Data de Vencimento </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.dataVencimento}}"> {{aluno.dataVencimento}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.dataVencimento}}">
+            {{ aluno.dataVencimento }}
+          </mat-cell>
         </ng-container>
 
         <!-- Email Column -->
         <ng-container matColumnDef="email">
           <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.email}}"> {{aluno.email}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.email}}">
+            {{ simplifica(aluno.email, 15) }}
+          </mat-cell>
         </ng-container>
 
         <!-- Data de Nascimento Column -->
         <ng-container matColumnDef="dataNascimento">
           <mat-header-cell *matHeaderCellDef> Data de Nascimento </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.dataNascimento}}"> {{aluno.dataNascimento}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.dataNascimento}}">
+            {{ aluno.dataNascimento }}
+          </mat-cell>
         </ng-container>
 
         <!-- Telefone Column -->
         <ng-container matColumnDef="telefone">
           <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.telefone}}"> {{aluno.telefone}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.telefone}}">
+            {{ aluno.telefone }}
+          </mat-cell>
         </ng-container>
 
         <!-- RG Column -->
         <ng-container matColumnDef="rg">
           <mat-header-cell *matHeaderCellDef> RG </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.rg}}"> {{aluno.rg}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.rg}}">
+            {{ aluno.rg }}
+          </mat-cell>
         </ng-container>
 
         <!-- CPF Column -->
         <ng-container matColumnDef="cpf">
           <mat-header-cell *matHeaderCellDef> CPF </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.cpf}}"> {{aluno.cpf}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.cpf}}">
+            {{ aluno.cpf }}
+          </mat-cell>
         </ng-container>
 
         <!-- Rua Column -->
         <ng-container matColumnDef="rua">
           <mat-header-cell *matHeaderCellDef> Rua </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.rua}}"> {{aluno.enderecoModel?.rua}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.rua}}">
+            {{ simplifica(aluno.enderecoModel?.rua, 15) }}
+          </mat-cell>
         </ng-container>
 
         <!-- Número Column -->
         <ng-container matColumnDef="numero">
           <mat-header-cell *matHeaderCellDef> Número </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.numero}}"> {{aluno.enderecoModel?.numero}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.numero}}">
+            {{ aluno.enderecoModel?.numero }}
+          </mat-cell>
         </ng-container>
 
         <!-- Bairro Column -->
         <ng-container matColumnDef="bairro">
           <mat-header-cell *matHeaderCellDef> Bairro </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.bairro}}"> {{aluno.enderecoModel?.bairro}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.bairro}}">
+            {{ simplifica(aluno.enderecoModel?.bairro, 15) }}
+          </mat-cell>
         </ng-container>
 
         <!-- CEP Column -->
         <ng-container matColumnDef="cep">
           <mat-header-cell *matHeaderCellDef> CEP </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.cep}}"> {{aluno.enderecoModel?.cep}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.cep}}">
+            {{ aluno.enderecoModel?.cep }}
+          </mat-cell>
         </ng-container>
 
         <!-- Cidade Column -->
         <ng-container matColumnDef="cidade">
           <mat-header-cell *matHeaderCellDef> Cidade </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.cidade}}"> {{aluno.enderecoModel?.cidade}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.cidade}}">
+            {{ simplifica(aluno.enderecoModel?.cidade, 15) }}
+          </mat-cell>
         </ng-container>
 
         <!-- Estado Column -->
         <ng-container matColumnDef="estado">
           <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
-          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.estado}}"> {{aluno.enderecoModel?.estado}} </mat-cell>
+          <mat-cell *matCellDef="let aluno" matTooltip="{{aluno.enderecoModel?.estado}}">
+            {{ aluno.enderecoModel?.estado }}
+          </mat-cell>
         </ng-container>
 
         <!-- Actions Column -->
         <ng-container matColumnDef="actions">
-          <mat-header-cell *matHeaderCellDef style="display: flex; justify-content: left; align-items: center; padding: 0.5">
-            <button mat-mini-fab class="btn btn-primary" aria-label="Adicionar um aluno" style="margin: 0; display: flex; align-items: center;">
-              <mat-icon (click)="onAdd()">add</mat-icon>
+          <mat-header-cell *matHeaderCellDef class="mat-header-cell-actions">
+            <button mat-mini-fab class="btn-action icon-add" aria-label="Adicionar um aluno" (click)="onAdd()">
+              <mat-icon>add</mat-icon>
             </button>
           </mat-header-cell>
 
-          <mat-cell *matCellDef="let aluno">
-            <button mat-icon-button style="border: none; background: none; padding: 0;">
-              <mat-icon style="color: blue;">edit</mat-icon>
+          <mat-cell *matCellDef="let aluno" class="actions-cell">
+            <button mat-icon-button class="btn-action icon-edit" aria-label="Editar Aluno" (click)="onEdit(aluno)">
+              <mat-icon>edit</mat-icon>
             </button>
-
-            <button mat-icon-button style="border: none; background: none; padding: 0;">
-              <mat-icon style="color: red;">delete</mat-icon>
+            <button mat-icon-button class="btn-action icon-delete" aria-label="Deletar Aluno" (click)="onDelete(aluno)">
+              <mat-icon>delete</mat-icon>
             </button>
           </mat-cell>
         </ng-container>
 
+        <!-- Header and Row Definitions -->
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>

@@ -1,5 +1,6 @@
 export class Aluno {
 
+  id: string;
   nome: string;
   dataNascimento: string;
   telefone: string;
@@ -19,6 +20,7 @@ export class Aluno {
 
 
   public constructor(){
+    this.id = '0';
     this.nome = 'Luana';
     this.dataNascimento = '15/08/2005';
     this.telefone = '89565656';
